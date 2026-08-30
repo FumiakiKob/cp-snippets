@@ -1,0 +1,19 @@
+{
+  "DuckDB Parse Single Variable": {
+    "scope": "sql,postgres",
+    "prefix": "spp",
+    "body": [
+      "split_part(data, ' ', ${1:1})::int as ${2:N}"
+    ],
+    "description": "Parse a space-separated integer from a line"
+  },
+  "DuckDB Parse Array with Index": {
+    "scope": "sql,postgres",
+    "prefix": "unns",
+    "body": [
+      "unnest(string_to_array(data, ' '))::int as ${1:A},",
+      "generate_subscripts(string_to_array(data, ' '), 1) as idx"
+    ],
+    "description": "Unnest a space-separated array and generate index"
+  }
+}
