@@ -997,7 +997,7 @@
       "        ((nCr) nCr)",
       "        ((nHk) nHk)",
       "        ((fact) (lambda (x) (vector-ref fact x)))",
-      "        ((fact-inv) (labmda (x) (vector-ref fact-inv x)))",
+      "        ((fact-inv) (lambda (x) (vector-ref fact-inv x)))",
       "        (else (error \"Unknown message:\" msg))))))"
     ],
     "description": "Combination (mod M)"
@@ -1523,5 +1523,29 @@
       "          (loop t mid))))))"
     ],
     "description": "Inexact Binary Search"
+  },
+  "Permutations": {
+    "scope": "scheme",
+    "prefix": "/permutations",
+    "body": [
+      "(define (permutations lst)",
+      "  (if (null? lst)",
+      "    '(())",
+      "    (let loop ((head '())",
+      "               (tail lst)",
+      "               (acc '()))",
+      "      (if (null? tail)",
+      "        (reverse acc)",
+      "        (let* ((x (car tail))",
+      "               (next-tail (cdr tail)))",
+      "          (loop (cons x head)",
+      "                next-tail",
+      "                (append",
+      "                  (map (lambda (p) (cons x p))",
+      "                    (reverse",
+      "                      (permutations (append (reverse head) next-tail))))",
+      "                  acc)))))))"
+    ],
+    "description": "Permutations"
   }
 }
