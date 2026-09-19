@@ -816,7 +816,11 @@
       "      (cons key (tree-value match))",
       "      #f)))",
       "(define (bag->alist bag)",
-      "  (tree->alist (cdr bag)))"
+      "  (tree->alist (cdr bag)))",
+      "(define (bag-min bag)",
+      "  (car (tree-left-most (cdr bag))))",
+      "(define (bag-max bag)",
+      "  (car (tree-right-most (cdr bag))))"
     ],
     "description": "Bag"
   },
